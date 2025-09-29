@@ -1,0 +1,97 @@
+{
+  "title": "Brain Type – Quick Test",
+  "archetypes": [
+    { "key": "calm_strategist", "name": "Calm Strategist" },
+    { "key": "stress_freezer", "name": "Stress Freezer" },
+    { "key": "reactive_sprinter", "name": "Reactive Sprinter" },
+    { "key": "over_analyzer", "name": "Over-Analyzer" },
+    { "key": "adaptive_operator", "name": "Adaptive Operator" }
+  ],
+  "scoring": {
+    "map": {
+      "q1": {
+        "A": "calm_strategist",
+        "B": "reactive_sprinter",
+        "C": "over_analyzer",
+        "D": "stress_freezer"
+      },
+      "q2": {
+        "A": "adaptive_operator",
+        "B": "over_analyzer",
+        "C": "calm_strategist",
+        "D": "stress_freezer"
+      },
+      "q3": {
+        "A": "reactive_sprinter",
+        "B": "calm_strategist",
+        "C": "adaptive_operator",
+        "D": "over_analyzer"
+      },
+      "q4": {
+        "A": "stress_freezer",
+        "B": "calm_strategist",
+        "C": "over_analyzer",
+        "D": "adaptive_operator"
+      },
+      "q5": {
+        "A": "over_analyzer",
+        "B": "adaptive_operator",
+        "C": "reactive_sprinter",
+        "D": "calm_strategist"
+      }
+    },
+    "method": "plurality"
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Under pressure, I usually…",
+      "options": [
+        "A) Plan calmly",
+        "B) Act fast",
+        "C) Analyze every angle",
+        "D) Go quiet"
+      ]
+    },
+    {
+      "id": "q2",
+      "text": "When tasks pile up…",
+      "options": [
+        "A) I adapt priorities",
+        "B) I make a spreadsheet",
+        "C) I focus on the highest leverage",
+        "D) I stall until clarity"
+      ]
+    },
+    {
+      "id": "q3",
+      "text": "In conversations…",
+      "options": [
+        "A) I speak first",
+        "B) I steer with questions",
+        "C) I mirror their energy",
+        "D) I listen and think"
+      ]
+    },
+    {
+      "id": "q4",
+      "text": "Before big decisions…",
+      "options": [
+        "A) I freeze briefly",
+        "B) I set constraints",
+        "C) I collect data",
+        "D) I phone a trusted peer"
+      ]
+    },
+    {
+      "id": "q5",
+      "text": "My best days feel…",
+      "options": [
+        "A) Organized deep work",
+        "B) Adaptive and social",
+        "C) Fast, lots of wins",
+        "D) Calm, focused, strategic"
+      ]
+    }
+  ]
+}
