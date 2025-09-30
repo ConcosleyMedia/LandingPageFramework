@@ -89,6 +89,7 @@ async function processJob(job: any) {
 
 async function loop() {
   while (true) {
+    console.log("Polling for pending report jobs...");
     const { data: jobs } = await supa
       .from("report_jobs")
       .select("*")
@@ -99,6 +100,7 @@ async function loop() {
     if (jobs && jobs.length > 0) {
       await processJob(jobs[0]);
     } else {
+      console.log("No jobs found. Sleeping...");
       await new Promise((r) => setTimeout(r, 5000));
     }
   }
