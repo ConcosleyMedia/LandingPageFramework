@@ -1,1 +1,1 @@
-worker: ts-node --esm worker.ts
+worker: npx tsx worker.ts
