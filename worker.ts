@@ -17,18 +17,26 @@ async function processJob(job: any) {
     .eq("id", job.id);
 
   try {
-    const { data: attempt } = await supa
+    const { data: attempt, error: attemptError } = await supa
       .from("quiz_attempts")
       .select("id,answers,archetype,category_id,user_id")
       .eq("id", job.quiz_attempt_id)
       .single();
 
-    const { data: prompt } = await supa
+    if (attemptError || !attempt) {
+      throw new Error(`Quiz attempt ${job.quiz_attempt_id} not found`);
+    }
+
+    const { data: prompt, error: promptError } = await supa
       .from("prompts")
       .select("template")
       .eq("category_id", attempt.category_id)
       .eq("type", job.product)
       .single();
+
+    if (promptError || !prompt) {
+      throw new Error(`Prompt template missing for category ${attempt.category_id} and type ${job.product}`);
+    }
 
     const filledPrompt = prompt.template
       .replace(/{{archetype_name}}/g, attempt.archetype)

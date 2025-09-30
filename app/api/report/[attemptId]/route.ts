@@ -2,13 +2,17 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import { getSupabaseAdminClient } from '@/lib/supabaseServerClient';
 
-export async function GET(_req: NextRequest, { params }: { params: { attemptId: string } }) {
+type RouteContext = { params: Promise<{ attemptId: string }> };
+
+export async function GET(_req: NextRequest, context: RouteContext) {
+  const { attemptId } = await context.params;
+
   const supabase = getSupabaseAdminClient();
 
   const { data: report, error } = await supabase
     .from('reports')
     .select('*')
-    .eq('quiz_attempt_id', params.attemptId)
+    .eq('quiz_attempt_id', attemptId)
     .maybeSingle();
 
   if (error) {

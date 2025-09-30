@@ -111,7 +111,7 @@ export default async function ThankYouPage({ searchParams }: ThankYouProps) {
         <p className="text-sm text-slate-600">
           Upgrade to the full assessment for the 30-question deep dive, 7 dimensions, printable PDF, and audio summary.
         </p>
-        <FullUpsellButton attemptId={resolvedAttemptId} product="full_assessment" />
+        <FullUpsellButton attemptId={resolvedAttemptId} />
       </section>
 
       <footer className="space-y-2 text-center text-xs text-slate-500">
