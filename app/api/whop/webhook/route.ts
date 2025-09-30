@@ -14,22 +14,36 @@ export async function POST(req: Request) {
     return new Response("missing event type", { status: 400 });
   }
 
-  const allowedEvents = new Set(["order.completed", "payment.succeeded"]);
+  const allowedEvents = new Set([
+    "order.completed",
+    "payment.succeeded",
+    "app_payment.succeeded",
+  ]);
   if (!allowedEvents.has(eventType)) {
     console.log("Whop webhook ignored event", eventType);
     return new Response("ignored");
   }
 
-  const meta = event.data?.metadata ?? event.metadata ?? {};
+  const meta =
+    event.data?.metadata ??
+    event.metadata ??
+    event.data?.membership_metadata ??
+    {};
   const quiz_attempt_id =
     meta.quiz_attempt_id ??
     meta.attempt_id ??
     event.data?.quiz_attempt_id ??
+    event.data?.membership_metadata?.quiz_attempt_id ??
     event.data?.attempt_id ??
     event.quiz_attempt_id ??
     event.attempt_id;
 
-  const product = meta.product ?? event.data?.product ?? meta.report_type ?? "mini_report";
+  const product =
+    meta.product ??
+    meta.report_type ??
+    event.data?.product ??
+    event.data?.membership_metadata?.product ??
+    "mini_report";
 
   if (!quiz_attempt_id) {
     console.error("No quiz_attempt_id found in metadata", event);
