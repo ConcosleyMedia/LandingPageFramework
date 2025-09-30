@@ -31,8 +31,8 @@ async function processJob(job: any) {
       .single();
 
     const filledPrompt = prompt.template
-      .replace("{{archetype_name}}", attempt.archetype)
-      .replace("{{answers_json}}", JSON.stringify(attempt.answers));
+      .replace(/{{archetype_name}}/g, attempt.archetype)
+      .replace(/{{answers_json}}/g, JSON.stringify(attempt.answers));
 
     const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini",
