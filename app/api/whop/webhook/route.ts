@@ -21,8 +21,15 @@ export async function POST(req: Request) {
   }
 
   const meta = event.data?.metadata ?? event.metadata ?? {};
-  const quiz_attempt_id = meta.quiz_attempt_id ?? event.data?.quiz_attempt_id ?? event.quiz_attempt_id;
-  const product = meta.product ?? "mini_report";
+  const quiz_attempt_id =
+    meta.quiz_attempt_id ??
+    meta.attempt_id ??
+    event.data?.quiz_attempt_id ??
+    event.data?.attempt_id ??
+    event.quiz_attempt_id ??
+    event.attempt_id;
+
+  const product = meta.product ?? event.data?.product ?? meta.report_type ?? "mini_report";
 
   if (!quiz_attempt_id) {
     console.error("No quiz_attempt_id found in metadata", event);
