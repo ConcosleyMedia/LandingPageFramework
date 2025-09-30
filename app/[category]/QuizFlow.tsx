@@ -149,6 +149,7 @@ export default function QuizFlow({
       const url = new URL(whopMiniUrl);
       url.searchParams.set('metadata[quiz_attempt_id]', teaser.attemptId);
       url.searchParams.set('metadata[category_slug]', categorySlug);
+      url.searchParams.set('metadata[product]', 'mini_report');
       if (affiliateHandle) {
         url.searchParams.set('metadata[affiliate]', affiliateHandle);
       }
@@ -165,6 +166,7 @@ export default function QuizFlow({
       const url = new URL(whopFullUrl);
       url.searchParams.set('metadata[quiz_attempt_id]', teaser.attemptId);
       url.searchParams.set('metadata[category_slug]', categorySlug);
+      url.searchParams.set('metadata[product]', 'full_assessment');
       if (affiliateHandle) {
         url.searchParams.set('metadata[affiliate]', affiliateHandle);
       }
